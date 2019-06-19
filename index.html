@@ -1,0 +1,32 @@
+
+<html>
+    <head>
+        <script src="https://demo.docusign.net/clickapi/sdk/latest/docusign-click.js"></script>
+        <script>
+            function showDocuSignClick()
+            {
+                document.body.style.cursor = "wait";
+                docuSignClick.Clickwrap.render({
+                    environment: 'https://demo.docusign.net',
+                    accountId: '1345d10e-0452-4f7c-a040-e7b53e8caa0b',
+                    clickwrapId: 'b847b99d-f159-4123-961e-2fa850d8b185',
+                    clientUserId: document.getElementById('username').value,
+                    onAgreed: callbackFnAgreed
+                }, '#ds-terms-of-service');
+            }
+
+            function callbackFnAgreed() {
+                location.href = 'click-complete.html'
+            }
+        </script>
+        <style>
+            body { color: #333; font: 14px "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif; padding: 10px 75px 0; }
+        </style>
+    </head>
+    <body>
+        <p>Welcome to DocuSign Click - please enter your email address to start</p>
+        <input type="text" id="username" name="username"/>
+        <p><input type="submit" onclick="showDocuSignClick()" value="Start..."/></p>
+        <div id="ds-terms-of-service"></div>
+    </body>
+</html>
